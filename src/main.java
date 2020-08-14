@@ -1,5 +1,5 @@
 import gui.*;
-import gui.console.Cons_GameBoard;
+import gui.console.*;
 import gamelogic.*;
 
 
@@ -16,7 +16,7 @@ public class main {
 
         // cons_Gameboard.update(newinput)
 
-        
+
 
 
         
