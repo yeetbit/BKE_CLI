@@ -1,28 +1,36 @@
 package gamelogic;
-import gui.canvas;
+import gui.console.Cons_GameBoard;
 
 public class Game {
 
-    private char symbol = 'X';
-    private char [][] playDek = { {symbol, symbol, symbol}, {symbol, symbol, symbol}, {symbol, symbol, symbol} };
+    private char symbol;
+    private char [][] playDek = new char[3][3];
 
 
-    private void gaming(){
-        int i = 0;
-        for (char[] row : playDek) {
-            for (char c : row) {
-                if(i == 0 || i == 2 || i == 4 ){
-                    System.out.println(symbol);
-                }else if(i = 1 || i = 3){
-                    System.out.println("|"+symbol);
-                }
-                i++
-                
-            }
-            
-        }
-
+    public Game(char symbol, char[][] playDek) {
+        this.symbol = symbol;
+        this.playDek = playDek;
     }
+
+    // instance of Cons_GameBoard Class
+    private Cons_GameBoard gameBoard = new Cons_GameBoard();
+
+    private void updateBoard(char [][] playdek){
+
+        // method call to Console Gameboard Class instance.
+        // this method only updates the playing field, 
+        // and accepts only a 2D character array.
+        gameBoard.updateBoard(playDek);
+    }
+
+
+
+
+
+    
+
+
+
 
 
    
