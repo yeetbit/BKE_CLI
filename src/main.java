@@ -1,11 +1,16 @@
 import gui.*;
-import gui.console.*;
 import gamelogic.*;
 
 
 public class main {
 
     public static void main(String[] args) {
+
+        Game game = new Game();
+
+        game.setPlayDek();
+        game.gameOn(true, true);
+
 
 
         // Playerselect match = new Playerselect()

@@ -1,15 +1,22 @@
 package gamelogic;
+import java.util.Scanner;
+
 import gui.console.Cons_GameBoard;
 
 public class Game {
 
     private char symbol;
-    private char [][] playDek = new char[3][3];
+    private char [][] playDek = new char [3][3];
 
 
-    public Game(char symbol, char[][] playDek) {
-        this.symbol = symbol;
-        this.playDek = playDek;
+    // Class contstructor initializes local variables
+    public Game() {
+        symbol = ' ';
+    }
+
+    public void setPlayDek() {
+        playDek = new char [][] {{symbol, symbol, symbol},{symbol, symbol, symbol},{symbol, symbol, symbol}};
+        
     }
 
     // instance of Cons_GameBoard Class
@@ -21,6 +28,15 @@ public class Game {
         // this method only updates the playing field, 
         // and accepts only a 2D character array.
         gameBoard.updateBoard(playDek);
+    }
+
+    public void gameOn(boolean p0, boolean p1){
+        //Scanner scanner = new Scanner(System.in);
+
+        updateBoard(playDek);
+
+
+
     }
 
 
