@@ -11,7 +11,7 @@ public class Game {
 
     // Class contstructor initializes local variables
     public Game() {
-        symbol = ' ';
+        symbol = 'H';
     }
 
     public void setPlayDek() {
