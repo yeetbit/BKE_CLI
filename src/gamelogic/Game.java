@@ -5,17 +5,15 @@ import gui.console.Cons_GameBoard;
 
 public class Game {
 
-    private char symbol;
     private char [][] playDek = new char [3][3];
 
 
     // Class contstructor initializes local variables
     public Game() {
-        symbol = 'Z';
     }
 
     public void setDefaultPlayDek() {
-        playDek = new char [][] {{symbol, symbol, symbol},{symbol, symbol, symbol},{symbol, symbol, symbol}};
+        playDek = new char [3][3];
         int n = '1';
 
         for (char[] row : playDek) {
@@ -43,6 +41,10 @@ public class Game {
         // and accepts only a 2D character array.
         gameBoard.updateBoard(playDek);
     }
+
+
+
+    //hahahahah je moeder is gek
     
     
 
