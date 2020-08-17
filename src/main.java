@@ -1,4 +1,3 @@
-import gui.*;
 import gamelogic.*;
 
 
@@ -10,8 +9,6 @@ public class main {
 
         game.setDefaultPlayDek();
         game.gameOn(true, true);
-
-
 
         // Playerselect match = new Playerselect()
         

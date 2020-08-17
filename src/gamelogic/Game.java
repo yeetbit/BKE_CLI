@@ -1,6 +1,5 @@
 package gamelogic;
 import java.util.Scanner;
-
 import gui.console.Cons_GameBoard;
 
 public class Game {
@@ -24,28 +23,41 @@ public class Game {
         }
     }
 
+
     public void gameOn(boolean p0, boolean p1){
-        //Scanner scanner = new Scanner(System.in);
+        if(p0&&p1){
+            updateBoard(playDek);
+            scanInput();
+        }else if(p0&&!p1){
+            updateBoard(playDek);
+            scanInput();
+        }
+    }
 
-        updateBoard(playDek);
+
+
+    private char scanInput(){
+        Scanner scanner = new Scanner(System.in);
+        char input = scanner.next().charAt(0);
+        scanner.close();
+        return input;
 
     }
 
+    Cons_GameBoard gameBoard = new Cons_GameBoard();
     // instance of Cons_GameBoard Class
-    private Cons_GameBoard gameBoard = new Cons_GameBoard();
 
-    private void updateBoard(char [][] playdek){
+    public void updateBoard(char [][] playdek){
 
-        // method call to Console Gameboard Class instance.
-        // this method only updates the playing field, 
-        // and accepts only a 2D character array.
-        gameBoard.updateBoard(playDek);
-    }
-
+    // method call to Console Gameboard Class instance.
+    // this method only updates the playing field, 
+    // and accepts only a 2D character array.
+    gameBoard.updateBoard(playDek);
+}     
 
 
-    //test testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-     
+// hahahahhahaahaha
+
     
 
 
