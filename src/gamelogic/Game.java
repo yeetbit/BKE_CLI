@@ -55,13 +55,7 @@ public class Game {
     gameBoard.updateBoard(playDek);
 }     
 
-
-// hahahahhahaahaha
-
-    
-
-
-
+//kakaschtinky
 
 
     
