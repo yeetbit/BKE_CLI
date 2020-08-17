@@ -10,13 +10,7 @@ public class main {
         game.setDefaultPlayDek();
         game.gameOn(true, true);
 
-        // Playerselect match = new Playerselect()
-        
-        // Cons_GameBoard cons_Gameboard = new Cons_GameBoard('X', [[],[],[]])
-
-        // Game game = new Game()
-
-        // cons_Gameboard.update(newinput)
+    
 
 
 

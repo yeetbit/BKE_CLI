@@ -44,15 +44,18 @@ public class Game {
 
     }
 
-    Cons_GameBoard gameBoard = new Cons_GameBoard();
-    // instance of Cons_GameBoard Class
+    
 
     public void updateBoard(char [][] playdek){
 
-    // method call to Console Gameboard Class instance.
-    // this method only updates the playing field, 
-    // and accepts only a 2D character array.
-    gameBoard.updateBoard(playDek);
+        Cons_GameBoard gameBoard = new Cons_GameBoard();
+        // instance of Cons_GameBoard Class
+
+        // method call to Console Gameboard Class instance.
+        // this method only updates the playing field, 
+        // and accepts only a 2D character array.
+        gameBoard.updateBoard(playDek);
+
 }     
 
 
