@@ -5,11 +5,18 @@ import gui.console.Cons_GameBoard;
 public class Game {
 
     private char [][] playDek = new char [3][3];
+    private char [] players = new char [2];
 
 
-    // Class contstructor initializes local variables
+    // Class constructor initializes without accessible variables
     public Game() {
     }
+    
+    
+    // instance of Cons_GameBoard Class
+    Cons_GameBoard terminalGame = new Cons_GameBoard();
+    
+
 
     public void setDefaultPlayDek() {
         playDek = new char [3][3];
@@ -24,44 +31,57 @@ public class Game {
     }
 
 
-    public void gameOn(boolean p0, boolean p1){
+    public void setGame(boolean p0, boolean p1){
         if(p0&&p1){
-            updateBoard(playDek);
-            scanInput();
+            players = setPlayer(p0, p1);
+            gameSwitch(players);
+
+
+
         }else if(p0&&!p1){
-            updateBoard(playDek);
-            scanInput();
+            players = setPlayer(p0, p1);
+
+
         }
     }
 
+    private void gameSwitch(char playerSymbol[]){
+       
+        char input = terminalGame.askPlayerPlay(currentPlayer);
 
 
-    private char scanInput(){
-        Scanner scanner = new Scanner(System.in);
-        char input = scanner.next().charAt(0);
-        scanner.close();
-        return input;
 
     }
+
+
+
+
 
     
 
     public void updateBoard(char [][] playdek){
-
-        Cons_GameBoard gameBoard = new Cons_GameBoard();
-        // instance of Cons_GameBoard Class
-
         // method call to Console Gameboard Class instance.
         // this method only updates the playing field, 
-        // and accepts only a 2D character array.
-        gameBoard.updateBoard(playDek);
+        // and accepts only a 2D character array, the array contains the 9 playable positions of the playingBoard.
+        terminalGame.updateBoard(playDek);
 
-}     
+    }     
 
-//kakaschtinky
+    private char setPlayer(boolean p0, boolean p1){
+        if(p0&&p1){
+
+            // Two player mode initialized, choice of playing character returned
+            char [] playSymbol = new char [2];
+            return playSymbol = terminalGame.askPlayerSymbol(p0, p1);
+
+            
+        }else if(p0&&!p1){
+            // TODO: initialize single player mode.
+           
+        }
 
 
-    
+    }
 
 
 
