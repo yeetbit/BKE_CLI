@@ -5,8 +5,21 @@ public class Player {
     private boolean turn;
     private char playingSymbol;
 
-    public Player(char playingSymbol) {
+
+
+    public Player(){
+    }
+
+    public char getplayChar() {
+        return playingSymbol;
+    }
+
+    public void setplayChar(char playingSymbol) {
         this.playingSymbol = playingSymbol;
+    }
+
+    public boolean getTurn(){
+        return this.turn;
     }
 
     public void isTurn(){
@@ -17,6 +30,7 @@ public class Player {
         this.turn = false;
     }
 
+  
   
     
 }

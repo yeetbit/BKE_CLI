@@ -22,18 +22,29 @@ public class Cons_GameBoard {
         nLine();
 
     }
-
-    private void nLine(){
-        System.out.println("\n");
-    }
-
-    public char askPlayerSymbol(Character p){
-        // TODO: ask player(s) for playing character
+   
+    //Asks player to pick a playing symbol
+    public char askPlayerSymbol(String p){
+        skipLine();
         System.out.println(p+" choose your favorite character: ");
         char symbol = scanInput();
         return symbol;
     }
 
+
+
+    //Asks player to play a position on the playing dek
+    public char askPlayerToPlay(char currentSymbol, String p){
+        nLine();
+        //TODO needs also a faulty or double input check, and message the player to try again.
+        System.out.println(p+" is on turn.");
+        char input = scanInput();
+        skipLine();
+        return input;
+
+    }
+
+    //scan's and fetches an only char, 1 element input
     public char scanInput(){
         Scanner scanner = new Scanner(System.in);
         char input = scanner.next().charAt(0);
@@ -42,12 +53,12 @@ public class Cons_GameBoard {
 
     }
 
-    public char askPlayerToPlay(char currentSymbol, char currentPlayer){
-        nLine();
-        System.out.println("Player "+ currentPlayer);
-        char input = scanInput();
-        return input;
+    private void skipLine(){
+        for(int i = 0; i < 15; i++){nLine();}
+    }
 
+    private void nLine(){
+        System.out.println("\n");
     }
     
 }
