@@ -1,4 +1,5 @@
 package gui.console;
+import java.util.Scanner;
 
 public class Cons_GameBoard {
     

@@ -1,5 +1,5 @@
 package gamelogic;
-import java.util.Scanner;
+
 import gui.console.Cons_GameBoard;
 
 public class Game {
