@@ -27,10 +27,11 @@ public class Cons_GameBoard {
         System.out.println("\n");
     }
 
-    public char [] askPlayerSymbol(boolean p0, boolean p1){
+    public char askPlayerSymbol(Character p){
         // TODO: ask player(s) for playing character
-
-
+        System.out.println(p+" choose your favorite character: ");
+        char symbol = scanInput();
+        return symbol;
     }
 
     public char scanInput(){
@@ -41,7 +42,7 @@ public class Cons_GameBoard {
 
     }
 
-    public char playerPlay(char currentSymbol, char currentPlayer){
+    public char askPlayerToPlay(char currentSymbol, char currentPlayer){
         nLine();
         System.out.println("Player "+ currentPlayer);
         char input = scanInput();

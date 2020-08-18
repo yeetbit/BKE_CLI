@@ -1,5 +1,5 @@
 package gamelogic.player;
 
-public class player_1 {
+public class Player_ai {
     
 }
