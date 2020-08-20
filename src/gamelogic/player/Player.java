@@ -8,6 +8,8 @@ public class Player {
 
 
     public Player(){
+        this.turn = false;
+        this.playingSymbol = ' ';
     }
 
     public char getplayChar() {

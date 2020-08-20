@@ -48,6 +48,7 @@ public class Cons_GameBoard {
     public char scanInput(){
         Scanner scanner = new Scanner(System.in);
         char input = scanner.next().charAt(0);
+        System.out.println("input is "+input);
         scanner.close();
         return input;
 

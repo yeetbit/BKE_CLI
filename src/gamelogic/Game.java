@@ -17,6 +17,7 @@ public class Game {
     //TODO reconsider pre-initialized instances    
     Player_0 player0 = new Player_0();
     Player_1 player1 = new Player_1();
+    Player_ai PlayerAI = new Player_ai();
 
     
 
@@ -27,6 +28,7 @@ public class Game {
     public void setGame(boolean p0, boolean p1){
         if(p0&&p1){
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
+            System.out.println("read out player0.getPlaychar() object.method = "+player0.getplayChar());
             player1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
 
             gameSwitch(player0.getTurn(), player1.getTurn());
@@ -38,6 +40,7 @@ public class Game {
     }
 
     private void gameState(){
+        
         if(player0.getTurn()&&!player1.getTurn()){      //TODO get rid of hardbaked
             terminalGame.askPlayerToPlay(player0.getplayChar(), "Player 1");
         }else if(!player0.getTurn()&&player1.getTurn()){
