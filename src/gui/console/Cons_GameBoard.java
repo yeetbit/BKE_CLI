@@ -9,7 +9,7 @@ public class Cons_GameBoard {
     // in a console/CLI style interface.
     //
 
-    Cons_GameBoard(){
+    public Cons_GameBoard(){
     }
 
     public void updateBoard(char[][] playDek){
@@ -43,19 +43,20 @@ public class Cons_GameBoard {
         nLine();
         //TODO needs also a faulty or double input check, and message the player to try again.
         System.out.println(p+" is on turn.");
-        char input = scanInput();
+        char move = scanInput();
         skipLine();
-        return input;
+        return move;
 
     }
 
-    //scan's and fetches an only char, 1 element input
-    //initialize Scanner class object
-    Scanner scanner = new Scanner(System.in);   
+    //instantiate Scanner class object
+    Scanner scanner = new Scanner(System.in);
+
+    //scan's and fetches an only char, 1st element input   
     public char scanInput(){
         char input = scanner.next().charAt(0);
         System.out.println("input is "+input);
-        scanner.close();
+        // scanner.close(); TODO fix memory leak of Scanner.scanner & System.in object
         return input;
 
     }
