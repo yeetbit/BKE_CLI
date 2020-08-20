@@ -3,7 +3,14 @@ import java.util.Scanner;
 
 public class Cons_GameBoard {
     
-    // updates the changed playing field
+    //
+    // the Cons_GameBoard class updates the changed playing field
+    // and sends messages to the users
+    // in a console/CLI style interface.
+    //
+
+    Cons_GameBoard(){
+    }
 
     public void updateBoard(char[][] playDek){
         int i=0;
@@ -31,8 +38,6 @@ public class Cons_GameBoard {
         return symbol;
     }
 
-
-
     //Asks player to play a position on the playing dek
     public char askPlayerToPlay(char currentSymbol, String p){
         nLine();
@@ -45,8 +50,9 @@ public class Cons_GameBoard {
     }
 
     //scan's and fetches an only char, 1 element input
+    //initialize Scanner class object
+    Scanner scanner = new Scanner(System.in);   
     public char scanInput(){
-        Scanner scanner = new Scanner(System.in);
         char input = scanner.next().charAt(0);
         System.out.println("input is "+input);
         scanner.close();
