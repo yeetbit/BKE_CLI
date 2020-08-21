@@ -35,6 +35,7 @@ public class Cons_GameBoard {
         skipLine();
         System.out.println(p+" choose your favorite character: ");
         char symbol = scanInput();
+        skipLine();
         return symbol;
     }
 
@@ -55,8 +56,6 @@ public class Cons_GameBoard {
     //scan's and fetches an only char, 1st element input   
     public char scanInput(){
         char input = scanner.next().charAt(0);
-        System.out.println("input is "+input);
-        // scanner.close(); TODO fix memory leak of Scanner.scanner & System.in object
         return input;
 
     }

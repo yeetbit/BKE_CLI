@@ -20,14 +20,6 @@ public class Game {
     Player_1 player1 = new Player_1();
     Player_ai PlayerAI = new Player_ai();
 
-    //controlled by playerselect, injects parameters of players
-    public playerObjectInjection(){
-        // TODO create logic
-
-    }
-
-
-
 
 
     public void setGame(boolean p0, boolean p1){
@@ -35,11 +27,34 @@ public class Game {
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
             player1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
 
-            gameSwitch(player0.getTurn(), player1.getTurn());
+            gameSwitch();
         }else if(p0&&!p1){
             //players[0] = terminalGame.askPlayerSymbol("player 1");
             //Player_0 player0 = new Player_0(players[0]);
             //TODO create fixed symbol for CPU
+        }
+    }
+
+    private void gameSwitch(){
+        //TODO whole method needs whichPlayerReturn() method overloading
+        boolean p0 = player0.getTurn(); 
+        boolean p1 = player1.getTurn();
+        if(p0&&!p1){
+            player0.noTurn();       //TODO get rid of hardbaked
+            player1.isTurn();
+            updateBoard(playDek);
+            gameState();       
+        }else if(!p0&&p1){
+            player0.isTurn();       //TODO get rid of hardbaked
+            player1.noTurn();
+            updateBoard(playDek);
+            gameState();
+        }else{
+            //TODO random first turn generator.
+            player0.noTurn();       //TODO get rid of hardbaked
+            player1.isTurn();
+            updateBoard(playDek);
+            gameState();        
         }
     }
 
@@ -58,8 +73,16 @@ public class Game {
                 }  
             }
         }
+        gameSwitch();
     }
 
+    //controlled by playerselect, injects parameters of players
+    public void playerObjectInjection(){
+        // TODO create logic
+
+    }
+
+    // Returns The current playing character
     private char whichPlayerReturn(){
         char playerChar = ' ';
         if(player0.getTurn()&&!player1.getTurn()){  
@@ -68,23 +91,6 @@ public class Game {
             playerChar = player1.getplayChar();
         }
         return playerChar;
-    }
-
-    private void gameSwitch(boolean p0, boolean p1){
-        if(p0&&!p1){
-            player0.noTurn();       //TODO get rid of hardbaked
-            player1.isTurn();
-            gameState();       
-        }else if(!p0&&p1){
-            player0.isTurn();       //TODO get rid of hardbaked
-            player1.noTurn();
-            gameState();
-        }else{
-            //TODO random first turn generator.
-            player0.noTurn();       //TODO get rid of hardbaked
-            player1.isTurn();
-            gameState();        
-        }
     }
 
     public void setDefaultPlayDek() {
@@ -99,7 +105,7 @@ public class Game {
         }
     }
 
-    public void updateBoard(char [][] playdek){
+    public void updateBoard(char [][] playDek){
         // method call to Console Gameboard Class instance.
         // this method only updates the playing field, 
         // and accepts only a 2D character array, the array contains the 9 playable positions of the playingBoard.
