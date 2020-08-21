@@ -89,19 +89,28 @@ public class Game {
             char turnChar = whichPlayerReturn();
             
             for (char[] row : playDek) {
-                int i=1;
+                int n=0;
                 for (char node : row) {
                     if(node==turnChar){
-                        i++;
+                        n++;
                     }
                 }
-                if(i==3){
+                if(n==3){
                     state = true;
                 }
             }
         // checks Columns for 3 times true
         }else if(!state){
-            state = true;
+            char turnChar = whichPlayerReturn();
+            int w = 0;
+
+            for(int n=0,row=0; n<2;row++){
+                if(playDek[row][n]==turnChar){
+                    w++
+                }
+
+            }
+
         // checks Diagonals for 3 times true
         }else if(!state){
             state = true;
