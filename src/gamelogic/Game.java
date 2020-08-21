@@ -73,7 +73,53 @@ public class Game {
                 }  
             }
         }
-        gameSwitch();
+        if(!gameWin()){
+            gameSwitch();
+
+        }else if(gameWin()){
+
+        }
+    }
+
+    private boolean gameWin(){
+        boolean state = false;
+
+        // Checks Rows for 3 times true
+        if(!state){
+            char turnChar = whichPlayerReturn();
+            
+            for (char[] row : playDek) {
+                int i=1;
+                for (char node : row) {
+                    if(node==turnChar){
+                        i++;
+                    }
+                }
+                if(i==3){
+                    state = true;
+                }
+            }
+        // checks Columns for 3 times true
+        }else if(!state){
+            state = true;
+        // checks Diagonals for 3 times true
+        }else if(!state){
+            state = true;
+        }
+        return state;  
+    }
+
+    private boolean rowCheck(){
+        
+        
+        return
+
+    }
+    private boolean colCheck(){
+
+    }
+    private boolean diagCheck(){
+
     }
 
     //controlled by playerselect, injects parameters of players
