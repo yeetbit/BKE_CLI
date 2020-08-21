@@ -43,14 +43,31 @@ public class Game {
         }
     }
 
-    private void gameState(){
-        
+    private void gameState() {         
         if(player0.getTurn()&&!player1.getTurn()){      //TODO get rid of hardbaked
             move = terminalGame.askPlayerToPlay(player0.getplayChar(), "Player 1");
 
         }else if(!player0.getTurn()&&player1.getTurn()){
             move = terminalGame.askPlayerToPlay(player1.getplayChar(), "Player 2");
         }
+
+        for (char[] row : playDek) {
+            for (int i=0;i<row.length; i++) {
+                if(row[i]==move){
+                    row[i] = whichPlayerReturn();
+                }  
+            }
+        }
+    }
+
+    private char whichPlayerReturn(){
+        char playerChar = ' ';
+        if(player0.getTurn()&&!player1.getTurn()){  
+            playerChar = player0.getplayChar();
+        }else if(!player0.getTurn()&&player1.getTurn()){
+            playerChar = player1.getplayChar();
+        }
+        return playerChar;
     }
 
     private void gameSwitch(boolean p0, boolean p1){
