@@ -109,19 +109,6 @@ public class Game {
         return state;  
     }
 
-    private boolean rowCheck(){
-        
-        
-        return
-
-    }
-    private boolean colCheck(){
-
-    }
-    private boolean diagCheck(){
-
-    }
-
     //controlled by playerselect, injects parameters of players
     public void playerObjectInjection(){
         // TODO create logic
