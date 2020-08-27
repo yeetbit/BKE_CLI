@@ -20,8 +20,6 @@ public class Game {
     Player_1 player1 = new Player_1();
     Player_ai PlayerAI = new Player_ai();
 
-
-
     public void setGame(boolean p0, boolean p1){
         if(p0&&p1){
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
@@ -186,15 +184,4 @@ public class Game {
 
     }     
 
-
-
-
-
-
-   
-
-    
-
-    
-    
 }
