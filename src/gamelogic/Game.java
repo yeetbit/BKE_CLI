@@ -77,17 +77,18 @@ public class Game {
             gameSwitch();
 
         }else if(gameWin()){
+            updateBoard(playDek);
+            terminalGame.playerWins(whichPlayerReturn());
 
         }
     }
 
     private boolean gameWin(){
         boolean state = false;
+        char turnChar = whichPlayerReturn();
 
         // Checks Rows for 3 times true
         if(!state){
-            char turnChar = whichPlayerReturn();
-            
             for (char[] row : playDek) {
                 int n=0;
                 for (char node : row) {
@@ -101,21 +102,57 @@ public class Game {
             }
         // checks Columns for 3 times true
         }else if(!state){
-            char turnChar = whichPlayerReturn();
-            int w = 0;
-
-            for(int n=0,row=0; n<2;row++){
+            for(int n=0,row=0, w=0; n<playDek[row].length; row++){
                 if(playDek[row][n]==turnChar){
-                    w++
+                    w++;
+                    if(w==3){
+                        state = true;
+                        break;
+                    }
+                }else if(w!=3&&row==2){
+                    row = 0;
+                    w = 0;
+                    n++;
                 }
-
             }
 
         // checks Diagonals for 3 times true
         }else if(!state){
-            state = true;
+            int w = 0;
+            // forwards diagonal
+            if(playDek[0][0]==turnChar){
+                for(int n=0, row=0; row<2; n++,row++){
+                    if(playDek[row][n]==turnChar){
+                        w++;
+                        if(w==3){
+                            state = true;
+                            break;
+                        }
+                    }else if(w!=3&&row==2){
+                        row = 0;
+                        w = 0;
+                    }
+                }
+            // backwards diagonal
+            }else if(playDek[0][2]==turnChar){
+                w = 0;
+                for(int n=2, row=0; row<2; n--,row++){
+                    if(playDek[row][n]==turnChar){
+                        w++;
+                        if(w==3){
+                            state = true;
+                            break;
+                        }
+                    }else if(w!=3&&row==2){
+                        row = 0;
+                        w = 0;
+                    }
+                }
+            }else{
+                terminalGame.errorMessage("counting gameWin()");
+            }
         }
-        return state;  
+        return state;
     }
 
     //controlled by playerselect, injects parameters of players

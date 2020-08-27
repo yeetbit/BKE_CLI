@@ -12,6 +12,9 @@ public class Cons_GameBoard {
     public Cons_GameBoard(){
     }
 
+    //instantiate Scanner class object
+    Scanner scanner = new Scanner(System.in);
+
     public void updateBoard(char[][] playDek){
         int i=0;
         nLine();
@@ -50,14 +53,21 @@ public class Cons_GameBoard {
 
     }
 
-    //instantiate Scanner class object
-    Scanner scanner = new Scanner(System.in);
+    public void playerWins(char player){
+        
+        System.out.println("Congratulations "+player+" wins!");
+    }
 
     //scan's and fetches an only char, 1st element input   
     public char scanInput(){
         char input = scanner.next().charAt(0);
         return input;
 
+    }
+
+    public void errorMessage(String word){
+        skipLine();
+        System.out.println("Error while "+word);
     }
 
     private void skipLine(){
