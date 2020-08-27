@@ -103,23 +103,18 @@ public class Game {
             }
         // checks Columns for 3 times true
         }if(!state){
-            
-
-            for(int n=0,row=0,w=0; n<=2; row++){              
-                if(playDek[row][n]==turnChar){
-                    w++;
-                    if(w==3){
+            int w=0;
+            for(int n=0; n<=2; n++){
+                for(int row=0; row<=2; row++){
+                    if(playDek[row][n]==turnChar){
+                        w++;                        
+                    }
+                    if(row==2&&w==3){
                         state = true;
                         break;
                     }
                 }
-                if(row==2){
-                    row=0;
-                    w=0;
-                    n++;
-                }
             }
-
         // checks Diagonals for 3 times true
         }if(!state){
             int w=0, n=0, row=0;
