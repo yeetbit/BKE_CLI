@@ -173,7 +173,6 @@ public class Game {
     }
 
     public void setDefaultPlayDek() {
-        playDek = new char [3][3];
         int n = '1';
 
         for (char[] row : playDek) {
