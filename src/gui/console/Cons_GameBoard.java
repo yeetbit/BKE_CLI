@@ -56,6 +56,7 @@ public class Cons_GameBoard {
     public void playerWins(char player){
         
         System.out.println("Congratulations "+player+" wins!");
+        nLine();
     }
 
     //scan's and fetches an only char, 1st element input   

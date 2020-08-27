@@ -90,66 +90,66 @@ public class Game {
         // Checks Rows for 3 times true
         if(!state){
             for (char[] row : playDek) {
-                int n=0;
+                int w=0;
                 for (char node : row) {
                     if(node==turnChar){
-                        n++;
+                        w++;
                     }
                 }
-                if(n==3){
+                if(w==3){
                     state = true;
+                    break;
                 }
             }
         // checks Columns for 3 times true
-        }else if(!state){
-            for(int n=0,row=0, w=0; n<playDek[row].length; row++){
+        }if(!state){
+            
+
+            for(int n=0,row=0,w=0; n<=2; row++){              
                 if(playDek[row][n]==turnChar){
                     w++;
                     if(w==3){
                         state = true;
                         break;
                     }
-                }else if(w!=3&&row==2){
-                    row = 0;
-                    w = 0;
+                }
+                if(row==2){
+                    row=0;
+                    w=0;
                     n++;
                 }
             }
 
         // checks Diagonals for 3 times true
-        }else if(!state){
-            int w = 0;
+        }if(!state){
+            int w=0, n=0, row=0;
             // forwards diagonal
             if(playDek[0][0]==turnChar){
-                for(int n=0, row=0; row<2; n++,row++){
+                while(row<=2){
                     if(playDek[row][n]==turnChar){
                         w++;
                         if(w==3){
                             state = true;
-                            break;
                         }
-                    }else if(w!=3&&row==2){
-                        row = 0;
-                        w = 0;
                     }
+                    n++;
+                    row++;
                 }
             // backwards diagonal
             }else if(playDek[0][2]==turnChar){
                 w = 0;
-                for(int n=2, row=0; row<2; n--,row++){
+                n = 2;
+                row = 0;
+                while(row<=2){
                     if(playDek[row][n]==turnChar){
                         w++;
                         if(w==3){
                             state = true;
-                            break;
                         }
-                    }else if(w!=3&&row==2){
-                        row = 0;
-                        w = 0;
                     }
+                    n--;
+                    row++;
                 }
-            }else{
-                terminalGame.errorMessage("counting gameWin()");
             }
         }
         return state;
