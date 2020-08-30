@@ -112,6 +112,9 @@ public class Game {
                         break;
                     }
                 }
+                if(w!=3){
+                    w = 0;
+                }
             }
         // checks Diagonals for 3 times true
         }if(!state){
