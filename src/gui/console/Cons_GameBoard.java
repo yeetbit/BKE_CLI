@@ -59,6 +59,12 @@ public class Cons_GameBoard {
         nLine();
     }
 
+    public void playerDraw(){
+        nLine();
+        System.out.println("Playing board is full, it's a draw.");
+    }
+
+
     //scan's and fetches an only char, 1st element input   
     public char scanInput(){
         char input = scanner.next().charAt(0);
@@ -78,5 +84,6 @@ public class Cons_GameBoard {
     private void nLine(){
         System.out.println("\n");
     }
+
     
 }

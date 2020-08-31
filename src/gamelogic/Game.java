@@ -18,7 +18,7 @@ public class Game {
     //TODO reconsider pre-initialized instances    
     Player_0 player0 = new Player_0();
     Player_1 player1 = new Player_1();
-    Player_ai PlayerAI = new Player_ai();
+    Player_ai playerAI = new Player_ai();
 
     public void setGame(boolean p0, boolean p1){
         if(p0&&p1){
@@ -61,9 +61,9 @@ public class Game {
             move = terminalGame.askPlayerToPlay(player0.getplayChar(), "Player 1");
         }else if(!player0.getTurn()&&player1.getTurn()){
             move = terminalGame.askPlayerToPlay(player1.getplayChar(), "Player 2");
-        }else if(!player0.getTurn()&&!player1.getTurn()&&PlayerAI.getTurn()){
-            move = PlayerAI.takeTurn(playDek);
-        }else{terminalGame.errorMessage("in gamestate() player select");
+        }else if(!player0.getTurn()&&!player1.getTurn()&&playerAI.getTurn()){
+            move = playerAI.takeTurn(playDek);
+        }else{terminalGame.errorMessage("in gamestate() player select");}
 
         for (char[] row : playDek) {
             for (int i=0;i<row.length; i++) {
@@ -79,14 +79,14 @@ public class Game {
             terminalGame.playerWins(whichPlayerReturn());
 
         }else{terminalGame.errorMessage("in gamestate() winning game select.");}
+    
     }
     
 
     private boolean gameWin(){
         boolean state = false;
         char turnChar = whichPlayerReturn();
-
-        // Checks Rows for 3 times true
+        // if horizontals 3 same chars in a row win game & end game
         if(!state){
             for (char[] row : playDek) {
                 int w=0;
@@ -100,7 +100,7 @@ public class Game {
                     break;
                 }
             }
-        // checks Columns for 3 times true
+        // if verticals 3 same chars in a row win game & end game
         }if(!state){
             int w=0;
             for(int n=0; n<=2; n++){
@@ -117,7 +117,7 @@ public class Game {
                     w = 0;
                 }
             }
-        // checks Diagonals for 3 times true
+        // if Diagonals 3 same chars in a row win game & end game
         }if(!state){
             int w=0, n=0, row=0;
             // forwards diagonal
@@ -147,9 +147,33 @@ public class Game {
                     n--;
                     row++;
                 }
+            
+            }
+        // if playDek is full, end game
+        }else if(!state){
+            int w=0;
+            for(int p=0; p<=2; p++){
+                // overloaded method, which returns
+                turnChar = whichPlayerReturn(p); 
+                for(char[] row : playDek) {
+                    for(char node : row) {
+                        if(node==turnChar){
+                            w++;
+                        }
+                    }
+                   
+                }
+                if(w==9){
+                    gameFullDeck();
+                    break;
+                }
             }
         }
         return state;
+    }
+
+    private void gameFullDeck(){
+        terminalGame.playerDraw();
     }
 
     //controlled by playerselect, injects parameters of players
@@ -168,6 +192,20 @@ public class Game {
         }
         return playerChar;
     }
+
+    // Returns all playing character
+    private char whichPlayerReturn(int player){
+        char playerChar = ' ';
+        if(player==0){  
+            playerChar = player0.getplayChar();
+        }else if(player==1){
+            playerChar = player1.getplayChar();
+        }else if(player==2){
+            playerChar = playerAI.getplayChar();
+        }
+        return playerChar;
+    }
+
 
     public void setDefaultPlayDek() {
         int n = '1';
