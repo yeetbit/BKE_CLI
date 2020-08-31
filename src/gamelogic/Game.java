@@ -59,10 +59,11 @@ public class Game {
     private void gameState() {         
         if(player0.getTurn()&&!player1.getTurn()){      //TODO get rid of hardbaked
             move = terminalGame.askPlayerToPlay(player0.getplayChar(), "Player 1");
-
         }else if(!player0.getTurn()&&player1.getTurn()){
             move = terminalGame.askPlayerToPlay(player1.getplayChar(), "Player 2");
-        }
+        }else if(!player0.getTurn()&&!player1.getTurn()&&PlayerAI.getTurn()){
+            move = PlayerAI.takeTurn(playDek);
+        }else{terminalGame.errorMessage("in gamestate() player select");
 
         for (char[] row : playDek) {
             for (int i=0;i<row.length; i++) {
@@ -73,13 +74,13 @@ public class Game {
         }
         if(!gameWin()){
             gameSwitch();
-
         }else if(gameWin()){
             updateBoard(playDek);
             terminalGame.playerWins(whichPlayerReturn());
 
-        }
+        }else{terminalGame.errorMessage("in gamestate() winning game select.");}
     }
+    
 
     private boolean gameWin(){
         boolean state = false;

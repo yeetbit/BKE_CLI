@@ -1,23 +1,21 @@
 package gamelogic.player;
 
 public class Player_ai extends Player {
-    private boolean turn;
 
     public Player_ai() {
-        this.turn = false;
-        
+
     }
 
-    @Override
-    public void isTurn() {
-        // TODO Auto-generated method stub
-        super.isTurn();
-        
-        
+
+    public char takeTurn(char[][] playDek){
+        char move = ' ';
+
+            //TODO AI algorithm here
+
+        return move;
     }
 
-    
 
-    //TODO AI algorithm here
-    
+
+
 }
