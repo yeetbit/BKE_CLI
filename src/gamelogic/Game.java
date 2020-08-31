@@ -27,8 +27,8 @@ public class Game {
 
             gameSwitch();
         }else if(p0&&!p1){
-            //players[0] = terminalGame.askPlayerSymbol("player 1");
-            //Player_0 player0 = new Player_0(players[0]);
+            player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
+            playerAI.setOponentChar(player0.getplayChar());
             //TODO create fixed symbol for CPU
         }
     }
