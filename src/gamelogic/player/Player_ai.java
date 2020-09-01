@@ -1,5 +1,7 @@
 package gamelogic.player;
 
+import java.util.ArrayList;
+
 public class Player_ai extends Player {
     
     char oponentChar;
@@ -105,12 +107,7 @@ public class Player_ai extends Player {
         return move;
     }
 
-    public setOponentChar(char oponentChar){
+    public void setOponentChar(char oponentChar){
         this.oponentChar = oponentChar;
-
     }
-
-
-
-
 }
