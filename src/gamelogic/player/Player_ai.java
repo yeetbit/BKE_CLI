@@ -10,35 +10,35 @@ public class Player_ai extends Player {
     public Player_ai() {
 
     }
+    
+    public void setOponentChar(char oponentChar){
+        this.oponentChar = oponentChar;
+    }
 
 
     public char takeTurn(char[][] playDek){
         char move = ' ';
         
          // if horizontals 3 same chars in a row win game & end game
-         if(!state){
+         if(move==' '){
             for (char[] row : playDek) {
-                int w=0;
                 for (char node : row) {
-                    if(node==turnChar){
-                        w++;
+                    if(node==oponentChar){
+                        moveCalculator(row, node)
+
                     }
-                }
-                if(w==3){
-                    state = true;
-                    break;
                 }
             }
         // if verticals 3 same chars in a row win game & end game
-        }if(!state){
+        }if(move==' '){
             int w=0;
             for(int n=0; n<=2; n++){
                 for(int row=0; row<=2; row++){
-                    if(playDek[row][n]==turnChar){
+                    if(playDek[row][n]==oponentChar){
                         w++;                        
                     }
                     if(row==2&&w==3){
-                        state = true;
+                    move = true;
                         break;
                     }
                 }
@@ -47,30 +47,30 @@ public class Player_ai extends Player {
                 }
             }
         // if Diagonals 3 same chars in a row win game & end game
-        }if(!state){
+        }if(move==' '){
             int w=0, n=0, row=0;
             // forwards diagonal
-            if(playDek[0][0]==turnChar){
+            if(playDek[0][0]==oponentChar){
                 while(row<=2){
-                    if(playDek[row][n]==turnChar){
+                    if(playDek[row][n]==oponentChar){
                         w++;
                         if(w==3){
-                            state = true;
+                        move = true;
                         }
                     }
                     n++;
                     row++;
                 }
             // backwards diagonal
-            }else if(playDek[0][2]==turnChar){
+            }else if(playDek[0][2]==oponentChar){
                 w = 0;
                 n = 2;
                 row = 0;
                 while(row<=2){
-                    if(playDek[row][n]==turnChar){
+                    if(playDek[row][n]==oponentChar){
                         w++;
                         if(w==3){
-                            state = true;
+                        move = true;
                         }
                     }
                     n--;
@@ -79,35 +79,15 @@ public class Player_ai extends Player {
             
             }
         // if playDek is full, end game
-        }else if(!state){
-            int w=0;
-            for(int p=0; p<=2; p++){
-                // overloaded method, which returns
-                turnChar = whichPlayerReturn(p); 
-                for(char[] row : playDek) {
-                    for(char node : row) {
-                        if(node==turnChar){
-                            w++;
-                        }
-                    }
-                   
-                }
-                if(w==9){
-                    gameFullDeck();
-                    break;
-                }
-            }
-        }
-
-      
-        
-
-            //TODO AI algorithm here
-
+        }   
         return move;
     }
 
-    public void setOponentChar(char oponentChar){
-        this.oponentChar = oponentChar;
+    private char moveCalculator(int row, int node){
+        
+        return move;
+
     }
+
+ 
 }
