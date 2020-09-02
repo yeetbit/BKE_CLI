@@ -27,6 +27,9 @@ public class Game {
 
             gameSwitch();
         }else if(p0&&!p1){
+            player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
+            playerAI.setOponentChar(player0.getplayChar());
+            gameSwitch();
             //players[0] = terminalGame.askPlayerSymbol("player 1");
             //Player_0 player0 = new Player_0(players[0]);
             //TODO create fixed symbol for CPU
