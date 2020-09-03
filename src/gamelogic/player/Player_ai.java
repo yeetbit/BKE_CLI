@@ -16,25 +16,11 @@ public class Player_ai extends Player {
         this.oponentChar = oponentChar;
     }
 
-    /// hallo ik ben gek   /// hallo ik ben gek
-   /// hallo ik ben gek
-   /// hallo ik ben gek
-   /// hallo ik ben gek
-   /// hallo ik ben gek
-   /// hallo ik ben gek
-   /// hallo ik ben gek
-
-
-
     public char takeTurn(char[][] playDek){
         char move = ' ';
         int moveChance = 0; // how many positions are free
         int moveHorizontal;
         int H = 3;
-        int M = 3;
-        int L = 3;        int H = 3;
-        int M = 3;
-        int L = 3;        int H = 3;
         int M = 3;
         int L = 3;
         int[] moveZone = {H,M,L};   // how many zones
