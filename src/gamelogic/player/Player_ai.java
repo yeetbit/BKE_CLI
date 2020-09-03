@@ -1,6 +1,7 @@
 package gamelogic.player;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Player_ai extends Player {
     
@@ -88,6 +89,5 @@ public class Player_ai extends Player {
         return move;
 
     }
-
- 
+    
 }
