@@ -18,13 +18,20 @@ public class Player_ai extends Player {
 
     public char takeTurn(char[][] playDek){
         char move = ' ';
+        int moveChance = 0; // how many positions are free
+        int moveHorizontal;
+        int H = 3;
+        int M = 3;
+        int L = 3;
+        int[] moveZone = {H,M,L};   // how many zones
+        int moveType = 0;
         
-         // if horizontals 3 same chars in a row win game & end game
-         if(move==' '){
+        if(move==' '){
+            
             for (char[] row : playDek) {
                 for (char node : row) {
-                    if(node==oponentChar){
-                        moveCalculator(row, node)
+                    if(node!=oponentChar){
+                        
 
                     }
                 }
