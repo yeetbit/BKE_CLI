@@ -20,23 +20,18 @@ public class Game {
     Player_1 player1 = new Player_1();
     Player_ai playerAI = new Player_ai();
 
-    public void setGame(boolean p0, boolean p1){
+    public void setGame(boolean p0, boolean p1){ // Player vs Player mode
         if(p0&&p1){
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
             player1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
 
             gameSwitch();
-        }else if(p0&&!p1){
-<<<<<<< HEAD
-            player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
-            playerAI.setOponentChar(player0.getplayChar());
-=======
+        }else if(p0&&!p1){ // Player vs AI oponent mode
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
             playerAI.setOponentChar(player0.getplayChar());
             gameSwitch();
             //players[0] = terminalGame.askPlayerSymbol("player 1");
             //Player_0 player0 = new Player_0(players[0]);
->>>>>>> 80157c2a38a8bab33b1b9ad3f003edd8372ce3bc
             //TODO create fixed symbol for CPU
         }
     }
