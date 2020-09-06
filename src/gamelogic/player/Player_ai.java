@@ -5,10 +5,10 @@ import java.util.Collection;
 
 public class Player_ai extends Player {
     
-    char playingSymbol;
-    char oponentChar;
-    char[][] moveMap = new char[3][3];
-    short ascii = 254;
+    private char playingSymbol;
+    private char oponentChar;
+    private char[][] moveMap = new char[3][3];
+    private short ascii = 254;
 
     public Player_ai() {
         this.playingSymbol = (char)ascii;
