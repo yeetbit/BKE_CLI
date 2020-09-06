@@ -5,20 +5,32 @@ import java.util.Collection;
 
 public class Player_ai extends Player {
     
+    char playingSymbol;
     char oponentChar;
     char[][] moveMap = new char[3][3];
+    short ascii = 254;
 
     public Player_ai() {
-
+        this.playingSymbol = (char)ascii;
     }
     
-    public void setOponentChar(char oponentChar){
-        this.oponentChar = oponentChar;
+    @Override
+    public char getplayChar() {
+        return playingSymbol;
+    }
+    
+    @Override
+    public void setplayChar(char symbol) {
+        System.out.println("AI playing symbol is fixed, cannot convert to: "+ symbol);
     }
 
 
     public char takeTurn(char[][] playDek){
         char move = ' ';
+        int opCharScore = 3;
+        int 
+
+
         
          // if horizontals 3 same chars in a row win game & end game
          if(move==' '){
