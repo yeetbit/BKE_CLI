@@ -69,7 +69,7 @@ public class Game {
         }else{terminalGame.errorMessage("in gamestate() player select");}
 
         for (char[] row : playDek) {
-            for (int i=0;i<row.length; i++) {
+            for (byte i=0;i<row.length; i++) {
                 if(row[i]==move){
                     row[i] = whichPlayerReturn();
                 }  
@@ -92,7 +92,7 @@ public class Game {
         // if horizontals 3 same chars in a row win game & end game
         if(!state){
             for (char[] row : playDek) {
-                int w=0;
+                byte w=0;
                 for (char node : row) {
                     if(node==turnChar){
                         w++;
@@ -105,9 +105,9 @@ public class Game {
             }
         // if verticals 3 same chars in a row win game & end game
         }if(!state){
-            int w=0;
-            for(int n=0; n<=2; n++){
-                for(int row=0; row<=2; row++){
+            byte w=0;
+            for(byte n=0; n<=2; n++){
+                for(byte row=0; row<=2; row++){
                     if(playDek[row][n]==turnChar){
                         w++;                        
                     }
@@ -122,7 +122,7 @@ public class Game {
             }
         // if Diagonals 3 same chars in a row win game & end game
         }if(!state){
-            int w=0, n=0, row=0;
+            byte w=0, n=0, row=0;
             // forwards diagonal
             if(playDek[0][0]==turnChar){
                 while(row<=2){
@@ -154,8 +154,8 @@ public class Game {
             }
         // if playDek is full, end game
         }else if(!state){
-            int w=0;
-            for(int p=0; p<=2; p++){
+            byte w=0;
+            for(byte p=0; p<=2; p++){
                 // overloaded method, which returns
                 turnChar = whichPlayerReturn(p); 
                 for(char[] row : playDek) {
@@ -211,10 +211,10 @@ public class Game {
 
 
     public void setDefaultPlayDek() {
-        int n = '1';
+        byte n = '1';
 
         for (char[] row : playDek) {
-            for (int i = 0; i < row.length; i++) {
+            for (byte i = 0; i < row.length; i++) {
                 row[i] = (char)n;
                 n++;
             }
