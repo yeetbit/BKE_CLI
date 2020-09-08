@@ -7,7 +7,8 @@ public class Player_ai extends Player {
     
     private char playingSymbol;
     private char oponentChar;
-    private ArrayList<Byte> moveMap = new ArrayList<Byte>();
+    //private ArrayList<Byte> moveMap = new ArrayList<Byte>();
+    private byte[] moveMap = new byte[8];
     private short ascii = 254;
 
     public Player_ai() {
@@ -29,12 +30,12 @@ public class Player_ai extends Player {
     }
 
     public char takeTurn(char[][] playDek){
-        fillMoveMap(playDek);        
-        char move = moveSort();
+        moveMapFill(playDek);        
+        char move = moveMapSort(playDek);
         return move;
     }
 
-    private void fillMoveMap(char[][] playDek){
+    private void moveMapFill(char[][] playDek){
         
         // play position action-score multipliers
         final byte oponentRowCharScore = 4;
@@ -57,7 +58,8 @@ public class Player_ai extends Player {
                     if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
                     if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
                 }
-                moveMap.add(i, rowScore);
+                //moveMap.add(i, rowScore);
+                moveMap[i]=rowScore;
                 i++;
             }
         // Iterate in vertical orientation
@@ -73,7 +75,8 @@ public class Player_ai extends Player {
                     if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
                     if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
                 }
-                moveMap.add(i, rowScore);
+                //moveMap.add(i, rowScore);
+                moveMap[i]=rowScore;
                 i++;
             }
         // Iterate in forward diagonal orientation
@@ -87,7 +90,8 @@ public class Player_ai extends Player {
                 if(node==oponentChar){rowScore += oponentRowCharScore;}
                 if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
                 if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
-                moveMap.add(i, rowScore);
+                //moveMap.add(i, rowScore);
+                moveMap[i]=rowScore;
                 i++;
                 n++;
                 row++;
@@ -104,7 +108,8 @@ public class Player_ai extends Player {
                 if(node==oponentChar){rowScore += oponentRowCharScore;}
                 if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
                 if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
-                moveMap.add(i, rowScore);
+                //moveMap.add(i, rowScore);
+                moveMap[i]=rowScore;
                 i++;
                 n--;
                 row++;
@@ -112,9 +117,55 @@ public class Player_ai extends Player {
         }   
     }
 
-    private char moveSort(){
+    private char moveMapSort(char[][] playDek){
+        byte i = 0;//index
+        byte iHigh = -1;
+        char selection;
 
-        moveMap.indexOf(o);
+        //moveMap.indexOf(o);
+
+        // simple sorting mechanism wich returns highest score of array
+        for(byte score : moveMap) {
+            for(byte s=i; s>=0;s--){
+                if(moveMap[i]>moveMap[s]){
+                    iHigh = i;
+                }
+            }   
+            i++;
+        }
+
+        if(iHigh!= -1){
+            if(iHigh<3){
+                //horizontal
+                for (char c : playDek[iHigh]) {
+                    char z = playDek[iHigh][c];
+                    if(z!=oponentChar && z!=playingSymbol){
+                        selection = z;
+                        break;
+                    }
+                }                    
+            }else if(iHigh<5){
+                //vertical
+                for(int row=0; row<=2; row++){
+                    char z = playDek[iHigh][row];
+                    if(z!=oponentChar && z!=playingSymbol){
+                        selection = z;
+                        break;
+                    }
+                }
+    
+            }else if(iHigh<6){
+
+            }else if(iHigh<7){
+
+            }else{System.out.println("error@ Player_ai.moveMapSort() ,iHigh value:"+iHigh);
+
+            }
+
+        }
+
+
+
         
 
         
