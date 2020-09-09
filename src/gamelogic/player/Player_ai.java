@@ -32,6 +32,17 @@ public class Player_ai extends Player {
         return move;
     }
 
+    /* 
+    Fills move map with highest play score
+    the index of the highest score is used to define which position to play/return.
+
+    This function is momentairily very basic, moveMap[] can contain multiple highest play scores,
+    and it picks now the first high(iHigh in moveMapSort()) Needs some improvement for a better oponent.
+    This configuration could also be the less difficult oponent.
+    */
+
+    // TODO: improve difficulty
+
     private void moveMapFill(char[][] playDek){
         
         // play position action-score multipliers
