@@ -7,6 +7,7 @@ public class Game {
 
     private char [][] playDek = new char [3][3];
     private char move;
+    boolean player2;
 
     // Class constructor initializes without accessible variables
     public Game() {
@@ -19,27 +20,27 @@ public class Game {
     Player_0 player0 = new Player_0();
     Player_1 player1 = new Player_1();
     Player_ai playerAI = new Player_ai();
+    
 
     public void setGame(boolean p0, boolean p1){ // Player vs Player mode
         if(p0&&p1){
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
             player1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
-
-            gameSwitch();
+            gameSwitch(player1.getTurn());
         }else if(p0&&!p1){ // Player vs AI oponent mode
             player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
             playerAI.setOponentChar(player0.getplayChar());
-            gameSwitch();
+            gameSwitch(playerAI.getTurn());
             //players[0] = terminalGame.askPlayerSymbol("player 1");
             //Player_0 player0 = new Player_0(players[0]);
             //TODO create fixed symbol for CPU
         }
     }
 
-    private void gameSwitch(){
+    private void gameSwitch(boolean player2gt){
         //TODO whole method needs whichPlayerReturn() method overloading
         boolean p0 = player0.getTurn(); 
-        boolean p1 = player1.getTurn();
+        boolean p1 = player2gt;
         if(p0&&!p1){
             player0.noTurn();       //TODO get rid of hardbaked
             player1.isTurn();

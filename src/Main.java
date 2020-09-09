@@ -7,7 +7,7 @@ public class Main {
 
         Game game = new Game();
         game.setDefaultPlayDek();
-        game.setGame(true, true);              
+        game.setGame(true, false);              
     }
     
 }
