@@ -1,8 +1,5 @@
 package gamelogic.player;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class Player_ai extends Player {
     
     private char playingSymbol;
@@ -120,23 +117,35 @@ public class Player_ai extends Player {
     private char moveMapSort(char[][] playDek){
         byte i = 0;//index
         byte iHigh = -1;
-        char selection;
+        char selection = ' ';
 
         //moveMap.indexOf(o);
 
         // simple sorting mechanism wich returns highest score of array
         for(byte score : moveMap) {
+            byte counterScore = 0;
             for(byte s=i; s>=0;s--){
-                if(moveMap[i]>moveMap[s]){
+                counterScore = moveMap[s];
+                if(score>counterScore){
                     iHigh = i;
                 }
             }   
             i++;
         }
 
+        /*
+        if iHigh(highest returned position) is less than type of row-type(movemap[index of 8]),
+        then iterate over index(in Playdek[3x] index of 3) and verify condition is not playing charachter. 
+        If empty playing field, use position character as move character.
+
+        Momentairily this always chooses the first posibility, when there are 2 positions free.
+        Needs some improvements
+        */
+
+        //TODO: Needs improvement of choice flexibility
         if(iHigh!= -1){
             if(iHigh<3){
-                //horizontal
+                //horizontal types
                 for (char c : playDek[iHigh]) {
                     char z = playDek[iHigh][c];
                     if(z!=oponentChar && z!=playingSymbol){
@@ -145,7 +154,7 @@ public class Player_ai extends Player {
                     }
                 }                    
             }else if(iHigh<5){
-                //vertical
+                //vertical types
                 for(int row=0; row<=2; row++){
                     char z = playDek[iHigh][row];
                     if(z!=oponentChar && z!=playingSymbol){
@@ -153,24 +162,30 @@ public class Player_ai extends Player {
                         break;
                     }
                 }
-    
             }else if(iHigh<6){
-
+                //frontal diagonal type
+                byte e=0;
+                for(int row=0; row<=2; row++){
+                    char z = playDek[row][e];
+                    if(z!=oponentChar && z!=playingSymbol){
+                        selection = z;
+                        break;
+                    }
+                    e++;
+                }
             }else if(iHigh<7){
-
-            }else{System.out.println("error@ Player_ai.moveMapSort() ,iHigh value:"+iHigh);
-
-            }
-
+                //frontal diagonal type
+                byte e=2;
+                for(int row=0; row<=2; row++){
+                    char z = playDek[row][e];
+                    if(z!=oponentChar && z!=playingSymbol){
+                        selection = z;
+                        break;
+                    }
+                    e--;
+                }
+            }else{System.out.println("error@ Player_ai.moveMapSort() ,iHigh value:"+iHigh);}
         }
-
-
-
-        
-
-        
-        return char poopy = '2';
-
+        return selection;
     }
-    
 }
