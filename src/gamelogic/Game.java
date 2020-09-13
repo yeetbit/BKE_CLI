@@ -7,66 +7,66 @@ public class Game {
 
     private char [][] playDek = new char [3][3];
     private char move;
-    boolean player2;
+    private Player_0 player_0;
+    private Player_1 player_1;
+    private Player_ai player_ai;
+    private Cons_GameBoard terminalGame;
+    private boolean versusAI;    
 
-    // Class constructor initializes without accessible variables
-    public Game() {
-    }
-    
-    // instance of Cons_GameBoard Class
-    Cons_GameBoard terminalGame = new Cons_GameBoard();
-
-    //TODO reconsider pre-initialized instances    
-    Player_0 player0 = new Player_0();
-    Player_1 player1 = new Player_1();
-    Player_ai playerAI = new Player_ai();
-    
-
-    public void setGame(boolean p0, boolean p1){ // Player vs Player mode
-        if(p0&&p1){
-            player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
-            player1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
-            gameSwitch(player1.getTurn());
-        }else if(p0&&!p1){ // Player vs AI oponent mode
-            player0.setplayChar(terminalGame.askPlayerSymbol("player 1"));      //TODO get rid of hardbaked 
-            playerAI.setOponentChar(player0.getplayChar());
-            gameSwitch(playerAI.getTurn());
-            //players[0] = terminalGame.askPlayerSymbol("player 1");
-            //Player_0 player0 = new Player_0(players[0]);
-            //TODO create fixed symbol for CPU
+    public Game(boolean p01, boolean p02) {
+        setDefaultPlayDek();
+        Cons_GameBoard terminalGame = new Cons_GameBoard();
+        if(p01&&p02){
+            versusAI = false;
+            player_0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
+            player_1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
+        }else if(p01&&!p02){ // Player vs AI oponent mode
+            versusAI = true;
+            player_0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
+            player_ai.setOponentChar(player_0.getplayChar());
         }
     }
 
-    private void gameSwitch(boolean player2gt){
+    public void startGame(){
+        gameSwitch();
+    }
+
+
+    private void gameSwitch(){
         //TODO whole method needs whichPlayerReturn() method overloading
-        boolean p0 = player0.getTurn(); 
-        boolean p1 = player2gt;
-        if(p0&&!p1){
-            player0.noTurn();       //TODO get rid of hardbaked
-            player1.isTurn();
+        boolean p0 = player_0.getTurn(); 
+        boolean p1_get_Turn;
+
+        if(versusAI){p1_get_Turn = player_ai.getTurn();
+        }else{p1_get_Turn = player_1.getTurn();}
+
+        if(p0&&!p1_get_Turn){
+            player_0.noTurn();       //TODO get rid of hardbaked
+            p1isTurn();
             updateBoard(playDek);
             gameState();       
-        }else if(!p0&&p1){
-            player0.isTurn();       //TODO get rid of hardbaked
-            player1.noTurn();
+        }else if(!p0&&p1_get_Turn){
+            player_0.isTurn();       //TODO get rid of hardbaked
+            player_1.noTurn();
             updateBoard(playDek);
             gameState();
         }else{
             //TODO random first turn generator.
-            player0.noTurn();       //TODO get rid of hardbaked
-            player1.isTurn();
+            player_0.noTurn();       //TODO get rid of hardbaked
+            player_1.isTurn();
             updateBoard(playDek);
             gameState();        
         }
     }
 
-    private void gameState() {         
-        if(player0.getTurn()&&!player1.getTurn()){      //TODO get rid of hardbaked
-            move = terminalGame.askPlayerToPlay(player0.getplayChar(), "Player 1");
-        }else if(!player0.getTurn()&&player1.getTurn()){
-            move = terminalGame.askPlayerToPlay(player1.getplayChar(), "Player 2");
-        }else if(!player0.getTurn()&&!player1.getTurn()&&playerAI.getTurn()){
-            move = playerAI.takeTurn(playDek);
+    private void gameState() {    
+             
+        if(player_0.getTurn()&&!player_1.getTurn()){      //TODO get rid of hardbaked
+            move = terminalGame.askPlayerToPlay(player_0.getplayChar(), "Player 1");
+        }else if(!player_0.getTurn()&&player_1.getTurn()){
+            move = terminalGame.askPlayerToPlay(player_1.getplayChar(), "Player 2");
+        }else if(!player_0.getTurn()&&!player_1.getTurn()&&player_ai.getTurn()){
+            move = player_ai.takeTurn(playDek);
         }else{terminalGame.errorMessage("in gamestate() player select");}
 
         for (char[] row : playDek) {
@@ -83,7 +83,6 @@ public class Game {
             terminalGame.playerWins(whichPlayerReturn());
 
         }else{terminalGame.errorMessage("in gamestate() winning game select.");}
-    
     }
     
 
@@ -180,19 +179,13 @@ public class Game {
         terminalGame.playerDraw();
     }
 
-    //controlled by playerselect, injects parameters of players
-    public void playerObjectInjection(){
-        // TODO create logic
-
-    }
-
     // Returns The current playing character
     private char whichPlayerReturn(){
         char playerChar = ' ';
-        if(player0.getTurn()&&!player1.getTurn()){  
-            playerChar = player0.getplayChar();
-        }else if(!player0.getTurn()&&player1.getTurn()){
-            playerChar = player1.getplayChar();
+        if(player_0.getTurn()&&!player_1.getTurn()){  
+            playerChar = player_0.getplayChar();
+        }else if(!player_0.getTurn()&&player_1.getTurn()){
+            playerChar = player_1.getplayChar();
         }
         return playerChar;
     }
@@ -201,11 +194,11 @@ public class Game {
     private char whichPlayerReturn(int player){
         char playerChar = ' ';
         if(player==0){  
-            playerChar = player0.getplayChar();
+            playerChar = player_0.getplayChar();
         }else if(player==1){
-            playerChar = player1.getplayChar();
+            playerChar = player_1.getplayChar();
         }else if(player==2){
-            playerChar = playerAI.getplayChar();
+            playerChar = player_ai.getplayChar();
         }
         return playerChar;
     }
