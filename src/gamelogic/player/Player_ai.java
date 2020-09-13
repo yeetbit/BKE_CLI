@@ -32,18 +32,23 @@ public class Player_ai extends Player {
         return move;
     }
 
-    /* 
-    Fills move map with highest play score
-    the index of the highest score is used to define which position to play/return.
-
-    This function is momentairily very basic, moveMap[] can contain multiple highest play scores,
-    and it picks now the first high(iHigh in moveMapSort()) Needs some improvement for a better oponent.
-    This configuration could also be the less difficult oponent.
-    */
-
-    // TODO: improve difficulty
-
+    
     private void moveMapFill(char[][] playDek){
+
+        /** Method info
+         * 
+         * Fills move map with highest play score
+         * the index of the highest score is used to define which position to play/return.
+         * 
+         * This function is momentairily very basic, moveMap[] can contain multiple highest play scores,
+         * and it picks now the first high(iHigh in moveMapSort()) Needs some improvement for a better oponent.
+         * This configuration could also be the less difficult oponent.
+         * 
+        */
+
+
+        // TODO: improve difficulty
+
         
         // play position action-score multipliers
         final byte oponentRowCharScore = 4;
@@ -126,11 +131,27 @@ public class Player_ai extends Player {
     }
 
     private char moveMapSort(char[][] playDek){
+    
+        /** Method info
+         * 
+         * The moveMapSort() method compares the highest score of all the playable rows,
+         * then a free play position of the returned row wil be selected by iterating over the rows.
+         * 
+         * First section sort:
+         * if iHigh(highest returned position) is less than type of row-type(movemap[index of 8]), 
+         * then iterate over index(in Playdek[3x] index of 3)
+         * and verify condition is not playing/oponent charachter(to exclude doubled playing position). 
+         * If empty playing field, use position character as move character.
+         * 
+         * Momentairily this always chooses the first posibility, when there are 2 positions free.
+         * Needs some improvements.
+        */
+
         byte i = 0;//index
         byte iHigh = -1;
         char selection = ' ';
 
-        //moveMap.indexOf(o);
+        //moveMap.indexOf(el);
 
         // simple sorting mechanism wich returns highest score of array
         for(byte score : moveMap) {
@@ -144,14 +165,7 @@ public class Player_ai extends Player {
             i++;
         }
 
-        /*
-        if iHigh(highest returned position) is less than type of row-type(movemap[index of 8]),
-        then iterate over index(in Playdek[3x] index of 3) and verify condition is not playing charachter. 
-        If empty playing field, use position character as move character.
-
-        Momentairily this always chooses the first posibility, when there are 2 positions free.
-        Needs some improvements
-        */
+     
 
         //TODO: Needs improvement of choice flexibility
         if(iHigh!= -1){
