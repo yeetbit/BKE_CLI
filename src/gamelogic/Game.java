@@ -33,7 +33,6 @@ public class Game {
 
 
     private void gameSwitch(){//fixed for 2 or ai play
-        //TODO whole method needs whichPlayerReturn() method overloading
         boolean p0 = player_0.getTurn(); 
         boolean p1_get_Turn;
 
@@ -41,18 +40,18 @@ public class Game {
         }else{p1_get_Turn = player_1.getTurn();}
 
         if(p0&&!p1_get_Turn){
-            player_0.noTurn();       //TODO get rid of hardbaked
+            player_0.noTurn();
             if(versusAI){player_ai.isTurn();}else{player_1.isTurn();}
             updateBoard(playDek);
             gameState();       
         }else if(!p0&&p1_get_Turn){
-            player_0.isTurn();       //TODO get rid of hardbaked
+            player_0.isTurn();
             if(versusAI){player_ai.noTurn();}else{player_1.noTurn();}
             updateBoard(playDek);
             gameState();
         }else{
-            //TODO random first turn generator.
-            player_0.noTurn();       //TODO get rid of hardbaked
+            //TODO: random first turn generator.
+            player_0.noTurn();
             if(versusAI){player_ai.isTurn();}else{player_1.isTurn();}
             updateBoard(playDek);
             gameState();        
@@ -65,7 +64,7 @@ public class Game {
         if(versusAI){p1_get_Turn = player_ai.getTurn();
         }else{p1_get_Turn = player_1.getTurn();} 
              
-        if(player_0.getTurn()&&!p1_get_Turn){      //TODO get rid of hardbaked
+        if(player_0.getTurn()&&!p1_get_Turn){      
             move = terminalGame.askPlayerToPlay(player_0.getplayChar(), "Player 1");
         }else if(!versusAI&&!player_0.getTurn()&&p1_get_Turn){
             move = terminalGame.askPlayerToPlay(player_1.getplayChar(), "Player 2");
@@ -158,7 +157,7 @@ public class Game {
         // if playDek is full, end game
         }else if(!state){
             byte w=0;
-            for(byte p=0; p<=2; p++){
+            for(byte p=0; p<=2; p++){ //TODO: needs fixing
                 // overloaded method, which returns
                 turnChar = whichPlayerReturn(p); 
                 for(char[] row : playDek) {
@@ -200,7 +199,7 @@ public class Game {
     }
 
     // Returns all playing character
-    private char whichPlayerReturn(int player){
+    private char whichPlayerReturn(int player){//TODO: needs fixing
         char playerChar = ' ';
         if(player==0){  
             playerChar = player_0.getplayChar();
