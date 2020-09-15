@@ -32,7 +32,7 @@ public class Game {
     }
 
 
-    private void gameSwitch(){
+    private void gameSwitch(){//fixed for 2 or ai play
         //TODO whole method needs whichPlayerReturn() method overloading
         boolean p0 = player_0.getTurn(); 
         boolean p1_get_Turn;
@@ -59,7 +59,7 @@ public class Game {
         }
     }
 
-    private void gameState() {   
+    private void gameState(){//fixed for 2 or ai play   
         boolean p1_get_Turn;
 
         if(versusAI){p1_get_Turn = player_ai.getTurn();
@@ -89,8 +89,7 @@ public class Game {
         }else{terminalGame.errorMessage("in gamestate() winning game select.");}
     }
     
-
-    private boolean gameWin(){
+    private boolean gameWin(){//no fix needed only dependencies
         boolean state = false;
         char turnChar = whichPlayerReturn();
         // if horizontals 3 same chars in a row win game & end game
@@ -179,17 +178,23 @@ public class Game {
         return state;
     }
 
-    private void gameFullDeck(){
+    private void gameFullDeck(){//no fix needed only dependencies
         terminalGame.playerDraw();
     }
 
     // Returns The current playing character
-    private char whichPlayerReturn(){
+    private char whichPlayerReturn(){//fixed for 2 or ai play
         char playerChar = ' ';
-        if(player_0.getTurn()&&!player_1.getTurn()){  
+        char p1_get_char;
+        boolean p1_get_Turn;
+
+        if(versusAI){p1_get_Turn = player_ai.getTurn();}else{p1_get_Turn = player_1.getTurn();}
+        if(versusAI){p1_get_char = player_ai.getplayChar();}else{p1_get_char = player_1.getplayChar();} 
+
+        if(player_0.getTurn()&&!p1_get_Turn){  
             playerChar = player_0.getplayChar();
-        }else if(!player_0.getTurn()&&player_1.getTurn()){
-            playerChar = player_1.getplayChar();
+        }else if(!player_0.getTurn()&&p1_get_Turn){
+            playerChar = p1_get_char;
         }
         return playerChar;
     }
