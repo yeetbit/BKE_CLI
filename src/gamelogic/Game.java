@@ -42,18 +42,18 @@ public class Game {
 
         if(p0&&!p1_get_Turn){
             player_0.noTurn();       //TODO get rid of hardbaked
-            p1isTurn();
+            if(versusAI){player_ai.isTurn();}else{player_1.isTurn();}
             updateBoard(playDek);
             gameState();       
         }else if(!p0&&p1_get_Turn){
             player_0.isTurn();       //TODO get rid of hardbaked
-            player_1.noTurn();
+            if(versusAI){player_ai.noTurn();}else{player_1.noTurn();}
             updateBoard(playDek);
             gameState();
         }else{
             //TODO random first turn generator.
             player_0.noTurn();       //TODO get rid of hardbaked
-            player_1.isTurn();
+            if(versusAI){player_ai.isTurn();}else{player_1.isTurn();}
             updateBoard(playDek);
             gameState();        
         }
