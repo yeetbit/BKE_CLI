@@ -59,13 +59,17 @@ public class Game {
         }
     }
 
-    private void gameState() {    
+    private void gameState() {   
+        boolean p1_get_Turn;
+
+        if(versusAI){p1_get_Turn = player_ai.getTurn();
+        }else{p1_get_Turn = player_1.getTurn();} 
              
-        if(player_0.getTurn()&&!player_1.getTurn()){      //TODO get rid of hardbaked
+        if(player_0.getTurn()&&!p1_get_Turn){      //TODO get rid of hardbaked
             move = terminalGame.askPlayerToPlay(player_0.getplayChar(), "Player 1");
-        }else if(!player_0.getTurn()&&player_1.getTurn()){
+        }else if(!versusAI&&!player_0.getTurn()&&p1_get_Turn){
             move = terminalGame.askPlayerToPlay(player_1.getplayChar(), "Player 2");
-        }else if(!player_0.getTurn()&&!player_1.getTurn()&&player_ai.getTurn()){
+        }else if(versusAI&&!player_0.getTurn()&&p1_get_Turn){
             move = player_ai.takeTurn(playDek);
         }else{terminalGame.errorMessage("in gamestate() player select");}
 
