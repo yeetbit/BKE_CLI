@@ -16,14 +16,15 @@ public class Player_ai extends Player {
     public char getplayChar() {
         return playingSymbol;
     }
-
+    
     public void setOponentChar(char oponentChar) {
         this.oponentChar = oponentChar;
     }
         
     @Override
     public void setplayChar(char symbol) {
-        System.out.println("AI playing symbol is fixed, cannot convert to: "+ symbol);
+        System.out.println("AI playing symbol is fixed, cannot convert to: "+symbol+"\nCurrent symbol: "+playingSymbol);
+
     }
 
     public char takeTurn(char[][] playDek){
