@@ -112,8 +112,8 @@ public class Player_ai extends Player {
             }
         // Iterate in forward diagonal orientation
         }if(true){
-            byte i=6, n=0, row=0;
-            while(row<=2){
+            byte i=5, n=0, row=0;
+            while(row<2){
                 rowScore = 0;
                 togglePlayerPlayed = false;
                 char node = playDek[row][n];
@@ -130,8 +130,8 @@ public class Player_ai extends Player {
         // Iterate in forward diagonal orientation
         }if(true){
             // backwards diagonal
-            byte i=7, n=2, row=0;
-            while(row<=2){
+            byte i=6, n=2, row=0;
+            while(row<=1){
                 rowScore = 0;
                 togglePlayerPlayed = false;
                 char node = playDek[row][n];
@@ -140,6 +140,7 @@ public class Player_ai extends Player {
                 if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
                 if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
                 //moveMap.add(i, rowScore);
+                //System.out.println("i: "+i);
                 moveMap[i]=rowScore;
                 i++;
                 n--;
@@ -156,13 +157,16 @@ public class Player_ai extends Player {
 
         //moveMap.indexOf(el);
 
-        // simple sorting mechanism wich returns highest score of array
+        // simple sorting mechanism wich returns highest score index of moveMap array,
+        // The highest currently  known score will be saved in iHigh. 
         for(byte score : moveMap) {
             byte counterScore = 0;
             for(byte s=i; s>=0;s--){
                 counterScore = moveMap[s];
                 if(score>counterScore){
                     iHigh = i;
+                    System.out.println("playingSymbol: "+playingSymbol+"i: "+i);
+
                 }
             }   
             i++;
@@ -182,8 +186,9 @@ public class Player_ai extends Player {
                     }
                 }                    
             }else if(iHigh<5){
-                //vertical types
+                //vertical types: iHigh represents the column number which will be played in
                 for(int row=0; row<=2; row++){
+                    // the loop scan's for a clear field in this column
                     char z = playDek[iHigh][row];
                     if(z!=oponentChar && z!=playingSymbol){
                         selection = z;

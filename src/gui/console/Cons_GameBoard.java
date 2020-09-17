@@ -81,7 +81,7 @@ public class Cons_GameBoard {
         for(int i = 0; i < 15; i++){nLine();}
     }
 
-    private void nLine(){
+    public void nLine(){
         System.out.println("\n");
     }
 
