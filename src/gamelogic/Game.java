@@ -157,7 +157,7 @@ public class Game {
         // if playDek is full, end game
         }else if(!state){
             byte w=0;
-            for(byte p=0; p<=2; p++){ //TODO: needs fixing
+            for(byte p=0; p<=1; p++){ //TODO: needs fixing
                 // overloaded method, which returns
                 turnChar = whichPlayerReturn(p); 
                 for(char[] row : playDek) {
@@ -199,14 +199,16 @@ public class Game {
     }
 
     // Returns all playing character
-    private char whichPlayerReturn(int player){//TODO: needs fixing
+    private char whichPlayerReturn(int player){//fixed for 2 or ai play
         char playerChar = ' ';
         if(player==0){  
             playerChar = player_0.getplayChar();
         }else if(player==1){
-            playerChar = player_1.getplayChar();
-        }else if(player==2){
-            playerChar = player_ai.getplayChar();
+            if(versusAI){
+                playerChar = player_ai.getplayChar();
+            }else{
+                playerChar = player_1.getplayChar();
+            }
         }
         return playerChar;
     }
