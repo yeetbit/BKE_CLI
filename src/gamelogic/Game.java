@@ -18,10 +18,14 @@ public class Game {
         Cons_GameBoard terminalGame = new Cons_GameBoard();
         if(p01&&p02){
             versusAI = false;
+            Player_0 player_0 = new Player_0();
+            Player_1 player_1 = new Player_1();
             player_0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
             player_1.setplayChar(terminalGame.askPlayerSymbol("player 2"));
         }else if(p01&&!p02){ // Player vs AI oponent mode
             versusAI = true;
+            Player_0 player_0 = new Player_0();
+            Player_ai player_ai = new Player_ai();
             player_0.setplayChar(terminalGame.askPlayerSymbol("player 1"));
             player_ai.setOponentChar(player_0.getplayChar());
         }
