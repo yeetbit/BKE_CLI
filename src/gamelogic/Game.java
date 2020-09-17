@@ -31,7 +31,6 @@ public class Game {
         gameSwitch();
     }
 
-
     private void gameSwitch(){//fixed for 2 or ai play
         boolean p0 = player_0.getTurn(); 
         boolean p1_get_Turn;
@@ -212,7 +211,6 @@ public class Game {
         }
         return playerChar;
     }
-
 
     public void setDefaultPlayDek() {
         byte n = '1';
