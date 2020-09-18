@@ -72,7 +72,7 @@ public class Game {
         }else if(!versusAI&&!player_0.getTurn()&&p1_get_Turn){
             move = terminalGame.askPlayerToPlay(player_1.getplayChar(), "Player 2");
         }else if(versusAI&&!player_0.getTurn()&&p1_get_Turn){
-            terminalGame.nLine();
+            terminalGame.skipLine();
             move = player_ai.takeTurn(playDek);
         }else{terminalGame.errorMessage("in gamestate() player select");}
 
