@@ -54,8 +54,8 @@ public class Game {
             gameState();
         }else{
             //TODO: random first turn generator.
-            player_0.noTurn();
-            if(versusAI){player_ai.isTurn();}else{player_1.isTurn();}
+            player_0.isTurn();
+            if(versusAI){player_ai.noTurn();}else{player_1.noTurn();}
             updateBoard(playDek);
             gameState();        
         }
