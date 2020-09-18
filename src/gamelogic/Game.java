@@ -37,10 +37,7 @@ final public class Game {
 
     private void gameSwitch(){//fixed for 2 or ai play
         boolean p0 = player_0.getTurn(); 
-        boolean p1_get_Turn;
-
-        if(versusAI){p1_get_Turn = player_ai.getTurn();
-        }else{p1_get_Turn = player_1.getTurn();}
+        boolean p1_get_Turn = (versusAI)? player_ai.getTurn() : player_1.getTurn();
 
         if(p0&&!p1_get_Turn){
             player_0.noTurn();
@@ -62,10 +59,7 @@ final public class Game {
     }
 
     private void gameState(){//fixed for 2 or ai play   
-        boolean p1_get_Turn;
-
-        if(versusAI){p1_get_Turn = player_ai.getTurn();
-        }else{p1_get_Turn = player_1.getTurn();} 
+        boolean p1_get_Turn = (versusAI)? player_ai.getTurn() : player_1.getTurn();
              
         if(player_0.getTurn()&&!p1_get_Turn){      
             move = terminalGame.askPlayerToPlay(player_0.getplayChar(), "Player 1");
@@ -188,11 +182,8 @@ final public class Game {
     // Returns The current playing character
     private char whichPlayerReturn(){//fixed for 2 or ai play
         char playerChar = ' ';
-        char p1_get_char;
-        boolean p1_get_Turn;
-
-        if(versusAI){p1_get_Turn = player_ai.getTurn();}else{p1_get_Turn = player_1.getTurn();}
-        if(versusAI){p1_get_char = player_ai.getplayChar();}else{p1_get_char = player_1.getplayChar();} 
+        char p1_get_char = (versusAI)? player_ai.getplayChar() : player_1.getplayChar();
+        boolean p1_get_Turn = (versusAI)? player_ai.getTurn() : player_1.getTurn();
 
         if(player_0.getTurn()&&!p1_get_Turn){  
             playerChar = player_0.getplayChar();
