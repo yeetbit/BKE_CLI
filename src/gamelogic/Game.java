@@ -3,7 +3,7 @@ package gamelogic;
 import gamelogic.player.*;
 import gui.console.Cons_GameBoard;
 
-public class Game {
+final public class Game {
 
     private char [][] playDek = new char [3][3];
     private char move;
