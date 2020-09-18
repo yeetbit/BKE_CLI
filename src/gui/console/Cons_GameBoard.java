@@ -77,11 +77,11 @@ public class Cons_GameBoard {
         System.out.println("Error while "+word);
     }
 
-    private void skipLine(){
+    public void skipLine(){
         for(int i = 0; i < 15; i++){nLine();}
     }
 
-    public void nLine(){
+    private void nLine(){
         System.out.println("\n");
     }
 
