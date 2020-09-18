@@ -29,8 +29,6 @@
 
 package gamelogic.player;
 
-import java.util.Comparator;
-
 public class Player_ai extends Player {
     
     private char playingSymbol;
