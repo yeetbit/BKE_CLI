@@ -29,6 +29,8 @@
 
 package gamelogic.player;
 
+import java.util.Comparator;
+
 public class Player_ai extends Player {
     
     private char playingSymbol;
@@ -165,8 +167,7 @@ public class Player_ai extends Player {
                 counterScore = moveMap[s];
                 if(score>counterScore){
                     iHigh = i;
-                    System.out.println("playingSymbol: "+playingSymbol+"i: "+i);
-
+                    //System.out.println("playingSymbol: "+playingSymbol+"i: "+i);
                 }
             }   
             i++;
@@ -174,9 +175,12 @@ public class Player_ai extends Player {
 
      
 
+        
         //TODO: Needs improvement of choice flexibility
+
+
         if(iHigh!= -1){
-            if(iHigh<3){
+            if(iHigh<=2){//including index 0
                 //horizontal types
                 for (char c : playDek[iHigh]) {
                     char z = playDek[iHigh][c];
@@ -185,18 +189,20 @@ public class Player_ai extends Player {
                         break;
                     }
                 }                    
-            }else if(iHigh<5){
+            }else if(iHigh<=5){
                 //vertical types: iHigh represents the column number which will be played in
                 for(int row=0; row<=2; row++){
-                    // the loop scan's for a clear field in this column
-                    char z = playDek[iHigh][row];
+                    byte col= iHigh;
+                    col--;col--;col--;
+                    System.out.println("\n iHigh:"+iHigh);
+                    char z = playDek[row][col];
                     if(z!=oponentChar && z!=playingSymbol){
                         selection = z;
                         break;
                     }
                 }
-            }else if(iHigh<6){
-                //frontal diagonal type
+            }else if(iHigh==6){
+                //front diagonal type
                 byte e=0;
                 for(int row=0; row<=2; row++){
                     char z = playDek[row][e];
@@ -206,8 +212,8 @@ public class Player_ai extends Player {
                     }
                     e++;
                 }
-            }else if(iHigh<7){
-                //frontal diagonal type
+            }else if(iHigh==7){
+                //back diagonal type
                 byte e=2;
                 for(int row=0; row<=2; row++){
                     char z = playDek[row][e];
@@ -221,4 +227,5 @@ public class Player_ai extends Player {
         }
         return selection;
     }
+
 }
