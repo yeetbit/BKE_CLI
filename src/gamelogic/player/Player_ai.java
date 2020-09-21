@@ -170,12 +170,8 @@ public class Player_ai extends Player {
             }   
             i++;
         }
-
-     
-
         
         //TODO: Needs improvement of choice flexibility
-
 
         if(iHigh!= -1){
             if(iHigh<=2){//including index 0
@@ -196,6 +192,7 @@ public class Player_ai extends Player {
                     char z = playDek[row][col];
                     if(z!=oponentChar && z!=playingSymbol){
                         selection = z;
+                        System.out.println("playing char: "+z);
                         break;
                     }
                 }
@@ -223,6 +220,7 @@ public class Player_ai extends Player {
                 }
             }else{System.out.println("error@ Player_ai.moveMapSort() ,iHigh value:"+iHigh);}
         }
+        System.out.println("moveMapSort() selection: "+selection);
         return selection;
     }
 }
