@@ -1,5 +1,7 @@
 {
-    "java.project.referencedLibraries": [
-        "/lib/jvm/Libraries/swt-4.17-gtk-linux-x86_64/**/*.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "/lib/jvm/Libraries/swt-4.17-gtk-linux-x86_64/**/*.jar",
+        ],
+    }
 }
