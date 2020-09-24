@@ -4,7 +4,7 @@ import org.eclipse.swt.widgets.*;
 
 public class SWT_GameBoard {
 
-    Button button = new Button(parent, style);
+    //Button button = new Button(parent, style);
 
     
     
