@@ -2,7 +2,7 @@
  * This Class is the "ai" Class of the tic tac toe game, it is a very basic compare & sort algorithm,
  * what finds out which move make based on the highest movescore. 
  * 
- * Following some method and dependency injection info:
+ * Some method and dependency injection info Following:
  * 
  * moveMapFill():
  *  Fills move map with highest play score
