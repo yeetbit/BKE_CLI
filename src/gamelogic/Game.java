@@ -5,8 +5,8 @@ import gui.console.Cons_GameBoard;
 
 final public class Game {
 
-    private char [][] playDek = new char [3][3];
-    private char move;
+    private Character [][] playDek = new Character [3][3];
+    private Character move;
     private Player_0 player_0;
     private Player_1 player_1;
     private Player_ai player_ai;
@@ -70,7 +70,7 @@ final public class Game {
             move = player_ai.takeTurn(playDek);
         }else{terminalGame.errorMessage("in gamestate() player select");}
 
-        for (char[] row : playDek) {
+        for (Character[] row : playDek) {
             for (byte i=0;i<row.length; i++) {
                 if(row[i]==move){
                     row[i] = whichPlayerReturn();
@@ -91,7 +91,7 @@ final public class Game {
         char turnChar = whichPlayerReturn();
         // if horizontals 3 same chars in a row win game & end game
         if(!state){
-            for (char[] row : playDek) {
+            for (Character[] row : playDek) {
                 byte w=0;
                 for (char node : row) {
                     if(node==turnChar){
@@ -158,7 +158,7 @@ final public class Game {
             for(byte p=0; p<=1; p++){ //TODO: needs fixing
                 // overloaded method, which returns
                 turnChar = whichPlayerReturn(p); 
-                for(char[] row : playDek) {
+                for(Character[] row : playDek) {
                     for(char node : row) {
                         if(node==turnChar){
                             w++;
@@ -211,7 +211,7 @@ final public class Game {
     public void setDefaultPlayDek() {
         byte n = '1';
 
-        for (char[] row : playDek) {
+        for (Character[] row : playDek) {
             for (byte i = 0; i < row.length; i++) {
                 row[i] = (char)n;
                 n++;
@@ -219,7 +219,7 @@ final public class Game {
         }
     }
 
-    public void updateBoard(char [][] playDek){
+    public void updateBoard(Character [][] playDek){
         // method call to Console Gameboard Class instance.
         // this method only updates the playing field, 
         // and accepts only a 2D character array, the array contains the 9 playable positions of the playingBoard.
