@@ -87,6 +87,9 @@ final public class Game {
     }
     
     private boolean gameWin(){//no fix needed only dependencies
+        /* 
+        TODO: Bug: when start playing from position 1, AI plays 4, then play pos 7 the AI die's.
+        */
         boolean state = false;
         char turnChar = whichPlayerReturn();
         // if horizontals 3 same chars in a row win game & end game
