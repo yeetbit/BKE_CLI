@@ -15,12 +15,12 @@ public class Cons_GameBoard {
     //instantiate Scanner class object
     Scanner scanner = new Scanner(System.in);
 
-    public void updateBoard(char[][] playDek){
+    public void updateBoard(Character[][] playDek){
         int i=0;
         nLine();
         System.out.println("Choose position, and enter corresponding number:");
         nLine();
-        for (char[] row : playDek) {
+        for (Character[] row : playDek) {
 
             System.out.println("                 "+" "+row[0]+" | "+row[1]+" | "+row[2]);
             if(i!=2){

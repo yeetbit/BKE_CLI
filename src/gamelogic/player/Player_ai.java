@@ -56,18 +56,17 @@ public class Player_ai extends Player {
 
     }
 
-    public char takeTurn(char[][] playDek){
+    public char takeTurn(Character[][] playDek){
         moveMapFill(playDek);        
         char move = moveMapSort(playDek);
         return move;
     }
 
     
-    private void moveMapFill(char[][] playDek){
+    private void moveMapFill(Character[][] playDek) {
 
         // TODO: improve difficulty
 
-        
         // play position action-score multipliers
         final byte oponentRowCharScore = 4;
         final byte playerRowCharscore = 3;
@@ -77,61 +76,91 @@ public class Player_ai extends Player {
         byte rowScore = 0;
         boolean togglePlayerPlayed;
 
-        // Iterate in horizontal orientation        
-        if(true){
+        // Iterate in horizontal orientation
+        if (true) {
             byte i = 0;
-            for (char[] row : playDek) {
+            for (Character[] row : playDek) {
                 rowScore = 0;
                 togglePlayerPlayed = false;
                 for (char node : row) {
-                    if(node!=oponentChar){rowScore += emptyRowCharscore;}
-                    if(node==oponentChar){rowScore += oponentRowCharScore;}
-                    if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
-                    if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
+                    if (node != oponentChar) {
+                        rowScore += emptyRowCharscore;
+                    }
+                    if (node == oponentChar) {
+                        rowScore += oponentRowCharScore;
+                    }
+                    if (node == playingSymbol) {
+                        rowScore += playerRowCharscore;
+                        togglePlayerPlayed = true;
+                    }
+                    if (node == playingSymbol && togglePlayerPlayed) {
+                        rowScore *= playerRowCharscore;
+                    } // winning move Score, if player already made a move in same row.
                 }
-                //moveMap.add(i, rowScore);
-                moveMap[i]=rowScore;
+                // moveMap.add(i, rowScore);
+                moveMap[i] = rowScore;
                 i++;
             }
-        // Iterate in vertical orientation
-        }if(true){
-            byte i=3;
-            for(byte n=0; n<=2; n++){
+            // Iterate in vertical orientation
+        }
+        if (true) {
+            byte i = 3;
+            for (byte n = 0; n <= 2; n++) {
                 rowScore = 0;
                 togglePlayerPlayed = false;
-                for(int row=0; row<=2; row++){
+                for (int row = 0; row <= 2; row++) {
                     char node = playDek[row][n];
-                    if(node!=oponentChar){rowScore += emptyRowCharscore;}
-                    if(node==oponentChar){rowScore += oponentRowCharScore;}
-                    if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
-                    if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
+                    if (node != oponentChar) {
+                        rowScore += emptyRowCharscore;
+                    }
+                    if (node == oponentChar) {
+                        rowScore += oponentRowCharScore;
+                    }
+                    if (node == playingSymbol) {
+                        rowScore += playerRowCharscore;
+                        togglePlayerPlayed = true;
+                    }
+                    if (node == playingSymbol && togglePlayerPlayed) {
+                        rowScore *= playerRowCharscore;
+                    } // winning move Score, if player already made a move in same row.
                 }
-                //moveMap.add(i, rowScore);
-                moveMap[i]=rowScore;
+                // moveMap.add(i, rowScore);
+                moveMap[i] = rowScore;
                 i++;
             }
-        // Iterate in forward diagonal orientation
-        }if(true){
-            byte i=5, n=0, row=0;
-            while(row<2){
+            // Iterate in forward diagonal orientation
+        }
+        if (true) {
+            byte i = 5, n = 0, row = 0;
+            while (row < 2) {
                 rowScore = 0;
                 togglePlayerPlayed = false;
                 char node = playDek[row][n];
-                if(node!=oponentChar){rowScore += emptyRowCharscore;}
-                if(node==oponentChar){rowScore += oponentRowCharScore;}
-                if(node==playingSymbol){rowScore += playerRowCharscore;togglePlayerPlayed=true;}
-                if(node==playingSymbol&&togglePlayerPlayed){rowScore *= playerRowCharscore;}// winning move Score, if player already made a move in same row. 
-                //moveMap.add(i, rowScore);
-                moveMap[i]=rowScore;
+                if (node != oponentChar) {
+                    rowScore += emptyRowCharscore;
+                }
+                if (node == oponentChar) {
+                    rowScore += oponentRowCharScore;
+                }
+                if (node == playingSymbol) {
+                    rowScore += playerRowCharscore;
+                    togglePlayerPlayed = true;
+                }
+                if (node == playingSymbol && togglePlayerPlayed) {
+                    rowScore *= playerRowCharscore;
+                } // winning move Score, if player already made a move in same row.
+                // moveMap.add(i, rowScore);
+                moveMap[i] = rowScore;
                 i++;
                 n++;
                 row++;
             }
-        // Iterate in forward diagonal orientation
-        }if(true){
+            // Iterate in forward diagonal orientation
+        }
+        if (true) {
             // backwards diagonal
-            byte i=6, n=2, row=0;
-            while(row<=1){
+            byte i = 6, n = 2, row = 0;
+            while (row <= 1) {
                 rowScore = 0;
                 togglePlayerPlayed = false;
                 char node = playDek[row][n];
@@ -149,68 +178,70 @@ public class Player_ai extends Player {
         }   
     }
 
-    private char moveMapSort(char[][] playDek){
-    
-        byte i = 0;//index
+    private char moveMapSort(Character[][] playDek) {
+
+        byte i = 0;// index
         byte iHigh = -1;
         char selection = ' ';
 
-        //moveMap.indexOf(el);
+        // moveMap.indexOf(el);
 
         // simple sorting mechanism wich returns highest score index of moveMap array,
-        // The highest currently  known score will be saved in iHigh. 
-        for(byte score : moveMap) {
+        // The highest currently known score will be saved in iHigh.
+        for (byte score : moveMap) {
             byte counterScore = 0;
-            for(byte s=i; s>=0;s--){
+            for (byte s = i; s >= 0; s--) {
                 counterScore = moveMap[s];
-                if(score>counterScore){
+                if (score > counterScore) {
                     iHigh = i;
-                    //System.out.println("playingSymbol: "+playingSymbol+"i: "+i);
+                    // System.out.println("playingSymbol: "+playingSymbol+"i: "+i);
                 }
-            }   
+            }
             i++;
         }
-        
-        //TODO: Needs improvement of choice flexibility
 
-        if(iHigh!= -1){
-            if(iHigh<=2){//including index 0
-                //horizontal types
+        // TODO: Needs improvement of choice flexibility
+
+        if (iHigh != -1) {
+            if (iHigh <= 2) {// including index 0
+                // horizontal types
                 for (char c : playDek[iHigh]) {
                     char z = playDek[iHigh][c];
-                    if(z!=oponentChar && z!=playingSymbol){
+                    if (z != oponentChar && z != playingSymbol) {
                         selection = z;
-                        break;
-                    }
-                }                    
-            }else if(iHigh<=5){
-                //vertical types: iHigh represents the column number which will be played in
-                for(int row=0; row<=2; row++){
-                    byte col= iHigh;
-                    col--;col--;col--;
-                    System.out.println("\n iHigh:"+iHigh);
-                    char z = playDek[row][col];
-                    if(z!=oponentChar && z!=playingSymbol){
-                        selection = z;
-                        System.out.println("playing char: "+z);
                         break;
                     }
                 }
-            }else if(iHigh==6){
-                //front diagonal type
-                byte e=0;
-                for(int row=0; row<=2; row++){
+            } else if (iHigh <= 5) {
+                // vertical types: iHigh represents the column number which will be played in
+                for (int row = 0; row <= 2; row++) {
+                    byte col = iHigh;
+                    col--;
+                    col--;
+                    col--;
+                    System.out.println("\n iHigh:" + iHigh);
+                    char z = playDek[row][col];
+                    if (z != oponentChar && z != playingSymbol) {
+                        selection = z;
+                        System.out.println("playing char: " + z);
+                        break;
+                    }
+                }
+            } else if (iHigh == 6) {
+                // front diagonal type
+                byte e = 0;
+                for (int row = 0; row <= 2; row++) {
                     char z = playDek[row][e];
-                    if(z!=oponentChar && z!=playingSymbol){
+                    if (z != oponentChar && z != playingSymbol) {
                         selection = z;
                         break;
                     }
                     e++;
                 }
-            }else if(iHigh==7){
-                //back diagonal type
-                byte e=2;
-                for(int row=0; row<=2; row++){
+            } else if (iHigh == 7) {
+                // back diagonal type
+                byte e = 2;
+                for (int row = 0; row <= 2; row++) {
                     char z = playDek[row][e];
                     if(z!=oponentChar && z!=playingSymbol){
                         selection = z;
