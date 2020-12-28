@@ -62,6 +62,13 @@ public class Player_ai extends Player {
         return move;
     }
 
+    /* 
+        TODO: Bug: inside moveMapFill(), moveMapSort() structure
+        
+            when start playing from position 1, AI plays 4, 
+            then when player moves to pos 7, AI stops making moves.
+
+    */
     
     private void moveMapFill(Character[][] playDek) {
 
