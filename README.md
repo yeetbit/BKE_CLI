@@ -8,7 +8,8 @@ A game in CLI style, NON-hardcode, OOP, create from scratch without resources/he
 ## Goals
 - logic structure is dynamic and scaleable to larger playingfields or multiple playing fields.
 - playing against the computer: the oponent calculate's what move to make. Difficulty can be set.
-- cli UI version
+- CLI version
+- UI version
 
 ## Build
 - contains bug, explained at top section within: /src/gamelogic/Player_ai.java
