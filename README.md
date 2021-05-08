@@ -10,5 +10,6 @@ A game in CLI style, NON-hardcode, OOP, create from scratch without resources/he
 - playing against the computer: the oponent calculate's what move to make. Difficulty can be set.
 - cli UI version
 
-
+## Build
+- has a bug, explained at top section within: /src/gamelogic/Player_ai.java
 - UPDATE: Compiled as native image
