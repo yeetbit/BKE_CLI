@@ -1,7 +1,8 @@
 ## Tic Tac Toe
 
 A game in CLI style, NON-hardcode in OOP standard, create from scratch without resources/help.
-purpose:
+
+## purpose
 -- training
 
 ## Goals
