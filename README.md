@@ -11,5 +11,5 @@ A game in CLI style, NON-hardcode, OOP, create from scratch without resources/he
 - cli UI version
 
 ## Build
-- has a bug, explained at top section within: /src/gamelogic/Player_ai.java
+- contains bug, explained at top section within: /src/gamelogic/Player_ai.java
 - UPDATE: Compiled as native image
