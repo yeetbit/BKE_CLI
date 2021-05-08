@@ -1,8 +1,13 @@
-## Tic Tac Toe game in CLI style, created by OOP standards. For the purpose to become familiar with Java 11 SE.  
+## Tic Tac Toe
 
+A game in CLI style, NON-hardcode in OOP standard, create from scratch without resources/help.
+purpose:
+-- training
 
--logic structure is dynamic and scaleable to larger playingfields or multiple playing fields.
+## Goals
+-- logic structure is dynamic and scaleable to larger playingfields or multiple playing fields.
+-- playing againts the computer, the oponent calculate's what move to make. Difficulty can be set.
+-- cli UI version
 
--when to play againts the computer, the oponent compares dynamically what move to make. Difficulty can be set.
 
 -- UPDATE: Compiled as native image
